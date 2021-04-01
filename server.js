@@ -16,6 +16,22 @@ const vonage = new Vonage({
     'base64'
   ),
 });
+
+let dtmfSounds = [
+  'https://tele-techno-bot.herokuapp.com/Audio/dtmf-0.mp3',
+  'https://tele-techno-bot.herokuapp.com/Audio/dtmf-1.mp3',
+  'https://tele-techno-bot.herokuapp.com/Audio/dtmf-2.mp3',
+  'https://tele-techno-bot.herokuapp.com/Audio/dtmf-3.mp3',
+  'https://tele-techno-bot.herokuapp.com/Audio/dtmf-4.mp3',
+  'https://tele-techno-bot.herokuapp.com/Audio/dtmf-5.mp3',
+  'https://tele-techno-bot.herokuapp.com/Audio/dtmf-6.mp3',
+  'https://tele-techno-bot.herokuapp.com/Audio/dtmf-7.mp3',
+  'https://tele-techno-bot.herokuapp.com/Audio/dtmf-8.mp3',
+  'https://tele-techno-bot.herokuapp.com/Audio/dtmf-9.mp3',
+  'https://tele-techno-bot.herokuapp.com/Audio/dtmf-hash.mp3',
+  'https://tele-techno-bot.herokuapp.com/Audio/dtmf-star.mp3',
+];
+
 let callInProgress = false;
 
 let UUID = '';
@@ -98,9 +114,7 @@ io.on('connection', socket => {
     vonage.calls.stream.start(
       UUID,
       {
-        stream_url: [
-          'https://nexmo-community.github.io/ncco-examples/assets/voice_api_audio_streaming.mp3',
-        ],
+        stream_url: [dtmfSounds[Math.floor(Math.random() * dtmfSounds.length)]],
         loop: 0,
       },
       (err, res) => {
