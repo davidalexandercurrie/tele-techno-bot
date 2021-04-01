@@ -36,7 +36,8 @@ let callInProgress = false;
 
 let UUID = '';
 
-const DIGITS = '1p2p3p4p5p6p7p8p9p0';
+const DIGITS =
+  '12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890';
 
 const makeCall = socket => {
   if (!callInProgress) {
@@ -45,12 +46,12 @@ const makeCall = socket => {
         to: [
           {
             type: 'phone',
-            number: '13472233468',
+            number: '13472958111',
           },
         ],
         from: {
           type: 'phone',
-          number: '13472233468',
+          number: '13472958111',
         },
         ncco: [
           {
@@ -110,12 +111,12 @@ io.on('connection', socket => {
       socket.emit('messageFromServer', { msg: 'busy...' });
     }
   });
-  socket.on('playAudio', () => {
+  socket.on('playAudio', data => {
     vonage.calls.stream.start(
       UUID,
       {
-        stream_url: [dtmfSounds[Math.floor(Math.random() * dtmfSounds.length)]],
-        loop: 0,
+        stream_url: [dtmfSounds[data.index]],
+        loop: 1,
       },
       (err, res) => {
         if (err) {
