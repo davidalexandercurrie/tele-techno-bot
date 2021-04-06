@@ -17,19 +17,34 @@ const vonage = new Vonage({
   ),
 });
 
-let dtmfSounds = [
-  'https://tele-techno-bot.herokuapp.com/Audio/dtmf-0.mp3',
-  'https://tele-techno-bot.herokuapp.com/Audio/dtmf-1.mp3',
-  'https://tele-techno-bot.herokuapp.com/Audio/dtmf-2.mp3',
-  'https://tele-techno-bot.herokuapp.com/Audio/dtmf-3.mp3',
-  'https://tele-techno-bot.herokuapp.com/Audio/dtmf-4.mp3',
-  'https://tele-techno-bot.herokuapp.com/Audio/dtmf-5.mp3',
-  'https://tele-techno-bot.herokuapp.com/Audio/dtmf-6.mp3',
-  'https://tele-techno-bot.herokuapp.com/Audio/dtmf-7.mp3',
-  'https://tele-techno-bot.herokuapp.com/Audio/dtmf-8.mp3',
-  'https://tele-techno-bot.herokuapp.com/Audio/dtmf-9.mp3',
-  'https://tele-techno-bot.herokuapp.com/Audio/dtmf-hash.mp3',
-  'https://tele-techno-bot.herokuapp.com/Audio/dtmf-star.mp3',
+// let dtmfSounds = [
+//   'https://tele-techno-bot.herokuapp.com/Audio/dtmf-0.mp3',
+//   'https://tele-techno-bot.herokuapp.com/Audio/dtmf-1.mp3',
+//   'https://tele-techno-bot.herokuapp.com/Audio/dtmf-2.mp3',
+//   'https://tele-techno-bot.herokuapp.com/Audio/dtmf-3.mp3',
+//   'https://tele-techno-bot.herokuapp.com/Audio/dtmf-4.mp3',
+//   'https://tele-techno-bot.herokuapp.com/Audio/dtmf-5.mp3',
+//   'https://tele-techno-bot.herokuapp.com/Audio/dtmf-6.mp3',
+//   'https://tele-techno-bot.herokuapp.com/Audio/dtmf-7.mp3',
+//   'https://tele-techno-bot.herokuapp.com/Audio/dtmf-8.mp3',
+//   'https://tele-techno-bot.herokuapp.com/Audio/dtmf-9.mp3',
+//   'https://tele-techno-bot.herokuapp.com/Audio/dtmf-hash.mp3',
+//   'https://tele-techno-bot.herokuapp.com/Audio/dtmf-star.mp3',
+// ];
+
+let dtmfSound = [
+  'https://tele-techno-bot.herokuapp.com/Audio/dtmf-louder-001',
+  'https://tele-techno-bot.herokuapp.com/Audio/dtmf-louder-002',
+  'https://tele-techno-bot.herokuapp.com/Audio/dtmf-louder-003',
+  'https://tele-techno-bot.herokuapp.com/Audio/dtmf-louder-004',
+  'https://tele-techno-bot.herokuapp.com/Audio/dtmf-louder-005',
+  'https://tele-techno-bot.herokuapp.com/Audio/dtmf-louder-006',
+  'https://tele-techno-bot.herokuapp.com/Audio/dtmf-louder-007',
+  'https://tele-techno-bot.herokuapp.com/Audio/dtmf-louder-008',
+  'https://tele-techno-bot.herokuapp.com/Audio/dtmf-louder-009',
+  'https://tele-techno-bot.herokuapp.com/Audio/dtmf-louder-010',
+  'https://tele-techno-bot.herokuapp.com/Audio/dtmf-louder-011',
+  'https://tele-techno-bot.herokuapp.com/Audio/dtmf-louder-012',
 ];
 
 let callInProgress = false;
@@ -46,12 +61,12 @@ const makeCall = socket => {
         to: [
           {
             type: 'phone',
-            number: '13472958111',
+            number: '13472233468',
           },
         ],
         from: {
           type: 'phone',
-          number: '13472958111',
+          number: '13472233468',
         },
         ncco: [
           {
