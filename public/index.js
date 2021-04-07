@@ -19,3 +19,10 @@ for (let i = 0; i < 10; i++) {
   });
   document.getElementById('keypad').appendChild(button);
 }
+
+let textButton = document.createElement('BUTTON');
+textButton.innerText = 'text';
+textButton.addEventListener('click', () => {
+  socket.emit('notifications', { index: i });
+});
+document.getElementById('keypad').appendChild(textButton);
