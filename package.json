@@ -13,6 +13,8 @@
     "@vonage/server-sdk": "^2.10.7",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "nodemailer": "^6.5.0",
+    "osa-imessage": "^2.4.2",
     "socket.io": "^4.0.0"
   }
 }

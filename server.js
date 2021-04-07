@@ -3,6 +3,25 @@ const app = express();
 const http = require('http').createServer(app);
 const Vonage = require('@vonage/server-sdk');
 require('dotenv').config();
+let b = 0;
+const imessage = require('osa-imessage');
+
+var nodemailer = require('nodemailer');
+
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'davidalexandercurrie@gmail.com',
+    pass: 'hyhqoqnwqolrllvf',
+  },
+});
+
+var mailOptions = {
+  from: 'youremail@gmail.com',
+  to: 'll4132@nyu.edu',
+  subject: 'Sending Email using Node.js',
+  text: 'That was easy!',
+};
 const options = {
   /* ... */
 };
@@ -16,6 +35,8 @@ const vonage = new Vonage({
     'base64'
   ),
 });
+
+const numbers = ['+13472958111'];
 
 let dtmfSounds = [
   'https://tele-techno-bot.herokuapp.com/Audio/dtmf-0.mp3',
@@ -35,7 +56,7 @@ let dtmfSounds = [
 let notificationSounds = [
   'https://tele-techno-bot.herokuapp.com/Audio/apple-text.mp3',
   'https://tele-techno-bot.herokuapp.com/Audio/snapchat.mp3',
-  'https://tele-techno-bot.herokuapp.com/Audio/gmailsou.mp3',
+  'https://tele-techno-bot.herokuapp.com/Audio/gmail.mp3',
 ];
 
 // let dtmfSounds = [
@@ -67,14 +88,14 @@ const makeCall = socket => {
         to: [
           {
             type: 'phone',
-            number: '13472233468',
-            // number: '13472958111',
+            // number: '13472233468',
+            number: '13472958111',
           },
         ],
         from: {
           type: 'phone',
-          // number: '13472958111',
-          number: '13472233468',
+          number: '13472958111',
+          // number: '13472233468',
         },
         ncco: [
           {
@@ -134,11 +155,23 @@ io.on('connection', socket => {
       socket.emit('messageFromServer', { msg: 'busy...' });
     }
   });
-  socket.on('playAudio', data => {
+  socket.on('notifications', data => {
+    if (data.index == 2) {
+      transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
+    }
+    if (data.index == 0) {
+      imessage.send(numbers[0], 'hello');
+    }
     vonage.calls.stream.start(
       UUID,
       {
-        stream_url: [dtmfSounds[data.index]],
+        stream_url: [notificationSounds[data.index]],
         loop: 1,
       },
       (err, res) => {
@@ -150,11 +183,11 @@ io.on('connection', socket => {
       }
     );
   });
-  socket.on('notifications', data => {
+  socket.on('playAudio', data => {
     vonage.calls.stream.start(
       UUID,
       {
-        stream_url: [notificationSounds[data.index]],
+        stream_url: [dtmfSounds[data.index]],
         loop: 1,
       },
       (err, res) => {
