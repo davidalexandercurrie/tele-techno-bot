@@ -19,10 +19,21 @@ for (let i = 0; i < 10; i++) {
   });
   document.getElementById('keypad').appendChild(button);
 }
-
 let textButton = document.createElement('BUTTON');
 textButton.innerText = 'text';
 textButton.addEventListener('click', () => {
-  socket.emit('notifications', { index: i });
+  socket.emit('notifications', { index: 0 });
+});
+document.getElementById('keypad').appendChild(textButton);
+let snapchat = document.createElement('BUTTON');
+snapchat.innerText = 'snapchat';
+snapchat.addEventListener('click', () => {
+  socket.emit('notifications', { index: 1 });
+});
+document.getElementById('keypad').appendChild(textButton);
+let gmail = document.createElement('BUTTON');
+gmail.innerText = 'gmail';
+gmail.addEventListener('click', () => {
+  socket.emit('notifications', { index: 2 });
 });
 document.getElementById('keypad').appendChild(textButton);

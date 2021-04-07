@@ -34,6 +34,8 @@ let dtmfSounds = [
 
 let notificationSounds = [
   'https://tele-techno-bot.herokuapp.com/Audio/apple-text.mp3',
+  'https://tele-techno-bot.herokuapp.com/Audio/snapchat.mp3',
+  'https://tele-techno-bot.herokuapp.com/Audio/gmailsou.mp3',
 ];
 
 // let dtmfSounds = [
